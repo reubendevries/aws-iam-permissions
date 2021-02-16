@@ -1,0 +1,13 @@
+{
+    "CreateRole": [{
+        "RoleName": "TestRole",
+        "AssumeRolePolicyDocument": [{
+
+        }],
+        "Description": "TestRoleCreated",
+        "Tags": [{
+            "Key": "",
+            "Value": ""
+        }]
+    }]
+}

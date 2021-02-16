@@ -1,0 +1,18 @@
+{
+    "CreatePolicy": [{
+        "PolicyName": "TestPolicy",
+        "PolicyDocument": [{
+            "Version": "2012-10-17",
+            "Statement": [{
+                "Sid": "ListBucketGetObject",
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetObject",
+                    "s3:ListBucket"
+                ],
+                "Resource": "arn:aws:s3:::testbucket"
+            }]
+        }],
+        "Description": "An example of a potential test policy that this function could create."
+    }]
+}

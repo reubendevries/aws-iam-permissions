@@ -1,0 +1,9 @@
+{
+    "CreateUsers": [{
+        "UserName": "TestUser",
+        "Tags": [{
+            "Key": "",
+            "Value": ""
+        }]
+    }]
+}

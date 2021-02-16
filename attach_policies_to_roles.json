@@ -1,0 +1,6 @@
+{
+    "AttachPolciesToRole": [{
+        "RoleName": "TestRole",
+        "PolicyArn": ""
+    }]
+}

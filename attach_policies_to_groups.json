@@ -1,0 +1,6 @@
+{
+    "AttachPoliciesToGroup": [{
+        "GroupName": "TestGroup",
+        "PolicyArn": ""
+    }]
+}

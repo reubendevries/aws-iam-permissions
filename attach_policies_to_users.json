@@ -1,0 +1,6 @@
+{
+    "AttachPoliciesToUser": [{
+        "UserName": "TestUser",
+        "PolicyArn": ""
+    }]
+}
