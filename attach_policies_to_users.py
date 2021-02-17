@@ -11,7 +11,6 @@ __version__ = """ 0.01 """
 
 #importing built in python modules
 import json
-import subprocess
 
 # importing 3rd party python modules
 import boto3
@@ -22,18 +21,18 @@ def read_permission_documents():
     of course the person requesting permissions will need to be familiar with the how AWS orgainizes their 
     permission structures, if they don't know then this whole streamlined process will be quite useless. """
 
-    with open("./aws-iam-permissions/create_policies.json") as policy_doc:
-        policies = json.load(policy_doc)
-        return policies
+    with open("./aws-iam-permissions/attach_policies_to_users.json") as policy_doc:
+        attach_policies_to_users = json.load(policy_doc)
+        return attach_policies_to_users
     
-def create_iam_policies(policies):
-    """ a function that will create a new iam policy based on the parameters given from the 
-    /"create_policies.json/" file """
+def attach_policies_to_users(attach_policies_to_users):
+    """ a function that will attach a iam policy to a user based on the parameters given from the 
+    /"attach_policies_to_users.json/" file """
     
 
 if __name__ == "__main__":
-    policies = read_permission_documents()
-    create_iam_policies(policies)
+    attach_policies_to_users = read_permission_documents()
+    attach_policies_to_users(attach_policies_to_users)
 
 #TODO:
 
