@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-__doc__ = """ A pair of functions designed to help end users organize and control their permissions
+__doc__ = """ A group of functions designed to help end users organize and control their permissions
 through a document called iam_permission.json, which should be found within the root of the repository. All
 your team will need to do is clone this repository, make a pull request (usually based off of a Jira ticket
 and then they can make the requested changes, and create a merge request, after a DevOps engineer has looked over
@@ -10,7 +10,9 @@ __author__ = """ Reuben deVries """
 __version__ = """ 0.01 """
 
 #importing built in python modules
+import argparse
 import json
+import subprocess
 
 # importing 3rd party python modules
 import boto3
@@ -21,18 +23,19 @@ def read_permission_documents():
     of course the person requesting permissions will need to be familiar with the how AWS orgainizes their 
     permission structures, if they don't know then this whole streamlined process will be quite useless. """
 
-    with open("./aws-iam-permissions/attach_policies_to_roles.json") as policy_doc:
-        attach_policies_to_groups = json.load(policy_doc)
-        return attach_policies_to_groups
+    with open("./aws-iam-permissions/create_policy.json") as policy_doc:
+        policy = json.load(policy_doc)
+        return policy
     
-def attach_policies_to_users(attach_policies_to_groups):
-    """ a function that will attach a iam policy to a user based on the parameters given from the 
-    /"attach_policies_to_users.json/" file """
+def create_iam_policy(policy):
+    """ a function that will create a new iam policy based on the parameters given from the 
+    \"/aws-iam-permissions/create_policy.json\" file """
     
+            
 
 if __name__ == "__main__":
-    attach_policies_to_groups = read_permission_documents()
-    attach_policies_to_users(attach_policies_to_groups)
+    policy = read_permission_documents()
+    create_iam_policy(policy)
 
 #TODO:
 

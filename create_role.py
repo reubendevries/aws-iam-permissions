@@ -22,20 +22,18 @@ def read_permission_documents():
     """ a function that will take a json formated document that people can use to request permissions.
     of course the person requesting permissions will need to be familiar with the how AWS orgainizes their 
     permission structures, if they don't know then this whole streamlined process will be quite useless. """
-
-    with open("./aws-iam-permissions/create_policy.json") as policy_doc:
-        policies = json.load(policy_doc)
-        return policies
     
-def create_iam_policy(policies):
+    with open("./aws-iam-permissions/create_role.json") as role_doc:
+        role = json.loads(role_doc)
+        return role
+    
+def create_iam_role(role):
     """ a function that will create a new iam policy based on the parameters given from the 
-    /"iam_permissions.json/" file """
-    
-            
+    \"/aws-iam-permissions/create_role.json\" file """
 
 if __name__ == "__main__":
-    policies = read_permission_documents()
-    create_iam_policy(policies)
+    role = read_permission_documents()
+    create_iam_role(role)
 
 #TODO:
 

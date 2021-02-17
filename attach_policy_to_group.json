@@ -1,0 +1,6 @@
+{
+    "AttachPolicyToGroup": [{
+        "GroupName": "TestGroup",
+        "PolicyArn": "arn:aws:iam::800896453169:policy/Stop_Start_EC2_Instance"
+    }]
+}

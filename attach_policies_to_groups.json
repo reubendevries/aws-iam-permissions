@@ -1,6 +1,0 @@
-{
-    "AttachPoliciesToGroup": [{
-        "GroupName": "TestGroup",
-        "PolicyArn": ""
-    }]
-}

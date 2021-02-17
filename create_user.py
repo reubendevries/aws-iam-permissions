@@ -24,18 +24,18 @@ def read_permission_documents():
     permission structures, if they don't know then this whole streamlined process will be quite useless. """
     
     with open("./aws-iam-permissions/create_user.json") as user_doc:
-        users = json.loads(user_doc)
-        return users
+        user = json.loads(user_doc)
+        return user
     
-def create_iam_users(users):
+def create_iam_user(user):
     """ a function that will create a new iam policy based on the parameters given from the 
-    /"iam_permissions.json/" file """
+    \"/aws-iam-permissions/create_user.json\" file """
     
             
 
 if __name__ == "__main__":
-    users = read_permission_documents()
-    create_iam_users(users)
+    user = read_permission_documents()
+    create_iam_user(user)
 
 #TODO:
 

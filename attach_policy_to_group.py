@@ -21,18 +21,24 @@ def read_permission_documents():
     of course the person requesting permissions will need to be familiar with the how AWS orgainizes their 
     permission structures, if they don't know then this whole streamlined process will be quite useless. """
 
-    with open("./aws-iam-permissions/attach_policies_to_roles.json") as policy_doc:
-        attach_policies_to_roles = json.load(policy_doc)
-        return attach_policies_to_roles
+    with open("./aws-iam-permissions/attach_policy_to_group.json") as attach_policy_to_group_doc:
+        attach_policy_to_group = json.load(attach_policy_to_group_doc)
+        return attach_policy_to_group
     
-def attach_policies_to_users(attach_policies_to_roles):
-    """ a function that will attach a iam policy to a user based on the parameters given from the 
-    /"attach_policies_to_users.json/" file """
-    
+def attach_policy_to_group(attach_policy_to_group):
+    """ a function that will attach a iam policy to a group based on the parameters given from the 
+    \"/aws-iam-permissions/attach_policy_to_group.json\" file """
+    print(attach_policy_to_group)
+    for policy_arn in attach_policy_to_group:
+        print(policy_arn)
+    for group_name in attach_policy_to_group:
+        print(group_name)
+    #iam = boto3.client("iam")
+    #iam.attach_group_policy
 
 if __name__ == "__main__":
-    attach_policies_to_roles = read_permission_documents()
-    attach_policies_to_users(attach_policies_to_roles)
+    attach_policy_to_group = read_permission_documents()
+    attach_policy_to_group(attach_policy_to_group)
 
 #TODO:
 
