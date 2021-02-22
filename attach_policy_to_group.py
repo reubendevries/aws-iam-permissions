@@ -10,35 +10,34 @@ __author__ = """ Reuben deVries """
 __version__ = """ 0.01 """
 
 #importing built in python modules
-import json
+import argparse
 
 # importing 3rd party python modules
 import boto3
 from   botocore.exceptions import ClientError
-
-def read_permission_documents():
-    """ a function that will take a json formated document that people can use to request permissions.
-    of course the person requesting permissions will need to be familiar with the how AWS orgainizes their 
-    permission structures, if they don't know then this whole streamlined process will be quite useless. """
-
-    with open("./aws-iam-permissions/attach_policy_to_group.json") as attach_policy_to_group_doc:
-        attach_policy_to_group = json.load(attach_policy_to_group_doc)
-        return attach_policy_to_group
     
-def attach_policy_to_group(attach_policy_to_group):
-    """ a function that will attach a iam policy to a group based on the parameters given from the 
-    \"/aws-iam-permissions/attach_policy_to_group.json\" file """
-    print(attach_policy_to_group)
-    for policy_arn in attach_policy_to_group:
-        print(policy_arn)
-    for group_name in attach_policy_to_group:
-        print(group_name)
-    #iam = boto3.client("iam")
-    #iam.attach_group_policy
+def attach_policy_to_group(args.add, args.delete, args.group, args.policy):
+    """ a function that will attach a iam policy to a group based on the parameters given via the cli"""
+    iam = boto3.client("iam")
+    if args.add in attach_policy_to_group():
+         iam.attach_group_policy(
+             GroupName = args.group,
+             PolicyArn = args.policy
+         )
+    else:
+        iam.delete_group_policy(
+             GroupName = args.group,
+             PolicyArn = args.policy
+         )
 
 if __name__ == "__main__":
-    attach_policy_to_group = read_permission_documents()
-    attach_policy_to_group(attach_policy_to_group)
+    parser = argparse.ArgumentParser(description="Pass through the name of the Policy you wish to add and which group you would like to add it too.")
+    parser.add_argument("-a", "--add", help="will add the policy to the group.")
+    parser.add_argument("-d", "--delete", help="will delete the policy from the group.")
+    parser.add_argument("-g", "--group", help="sets the group that you would want to add the policy.")
+    parser.add_argument("-p", "--policy", help="sets the policy arn that you would want to add the group.")
+    args = parser.parse_args()
+    attach_policy_to_group(args.add, args.delete, args.group, args.policy)
 
 #TODO:
 
